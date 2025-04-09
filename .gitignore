@@ -1,0 +1,13 @@
+.idea/
+*.iml
+*.ipr
+*.iws
+
+/app/.npmignore
+node_modules/
+package-lock.json
+
+*.blockly
+
+/dist/
+/out/
