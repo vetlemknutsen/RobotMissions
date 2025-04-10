@@ -5,16 +5,17 @@
  */
 
 import * as Blockly from 'blockly';
-import {blocks} from './blocks/text';
-import {forBlock} from './generators/javascript';
-import {javascriptGenerator} from 'blockly/javascript';
-import {save, load} from './serialization';
+import {blocks} from './blocks/index';
+import {toMissionJson} from './generators/index';
 import {toolbox} from './toolbox';
 import './index.css';
 
 // Register the blocks and generator with Blockly
-Blockly.common.defineBlocks(blocks);
-Object.assign(javascriptGenerator.forBlock, forBlock);
+Blockly.common.defineBlocksWithJsonArray(blocks);
+
+const jsonGenerator = {
+  forBlock: toMissionJson
+};
 
 // Set up UI elements and inject Blockly
 const codeDiv = document.getElementById('generatedCode').firstChild;
@@ -22,29 +23,33 @@ const outputDiv = document.getElementById('output');
 const blocklyDiv = document.getElementById('blocklyDiv');
 const ws = Blockly.inject(blocklyDiv, {toolbox});
 
+const generateMissionJson = () => {
+  const mission = [];
+
+  ws.getAllBlocks().forEach((block) => {
+    const generator = jsonGenerator.forBlock[block.type];
+    if (generator) {
+      mission.push(generator(block));
+    }
+  });
+
+  return JSON.stringify(mission, null, 2);
+};
+
+
 // This function resets the code and output divs, shows the
 // generated code from the workspace, and evals the code.
 // In a real application, you probably shouldn't use `eval`.
 const runCode = () => {
-  const code = javascriptGenerator.workspaceToCode(ws);
+  const code = generateMissionJson();
   codeDiv.innerText = code;
 
   outputDiv.innerHTML = '';
 
-  eval(code);
 };
 
-// Load the initial state from storage and run the code.
-load(ws);
 runCode();
 
-// Every time the workspace changes state, save the changes to storage.
-ws.addChangeListener((e) => {
-  // UI events are things like scrolling, zooming, etc.
-  // No need to save after one of these.
-  if (e.isUiEvent) return;
-  save(ws);
-});
 
 // Whenever the workspace changes meaningfully, run the code again.
 ws.addChangeListener((e) => {

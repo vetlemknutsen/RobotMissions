@@ -3,7 +3,7 @@
 *.ipr
 *.iws
 
-/app/.npmignore
+/public/.npmignore
 node_modules/
 package-lock.json
 
