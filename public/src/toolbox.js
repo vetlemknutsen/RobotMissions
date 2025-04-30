@@ -4,6 +4,26 @@ export const toolbox = {
   contents: [
     {
       kind: 'category',
+      name: 'Mission',
+      contents: [
+        {
+          kind: 'block',
+          type: 'mission',
+        }
+      ],
+    },
+    {
+      kind: 'category',
+      name: 'Robot',
+      contents: [
+        {
+          kind: 'block',
+          type: 'robot',
+        }
+      ],
+    },
+    {
+      kind: 'category',
       name: 'Robot Commands',
       contents: [
         {
@@ -27,6 +47,10 @@ export const toolbox = {
         {
           kind: 'block',
           type: 'environment',
+        },
+        {
+          kind: 'block',
+          type: 'box',
         }
       ],
     }

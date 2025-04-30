@@ -24,16 +24,14 @@ const blocklyDiv = document.getElementById('blocklyDiv');
 const ws = Blockly.inject(blocklyDiv, {toolbox});
 
 const generateMissionJson = () => {
-  const mission = [];
-
-  ws.getAllBlocks().forEach((block) => {
-    const generator = jsonGenerator.forBlock[block.type];
+  const topBlock = ws.getTopBlocks(true).find((block) => block.type === 'mission');
+  if (topBlock) {
+    const generator = jsonGenerator.forBlock[topBlock.type];
     if (generator) {
-      mission.push(generator(block));
+      return JSON.stringify(generator(topBlock), null, 2);
     }
-  });
-
-  return JSON.stringify(mission, null, 2);
+  }
+  return '{}';
 };
 
 
@@ -43,7 +41,6 @@ const generateMissionJson = () => {
 const runCode = () => {
   const code = generateMissionJson();
   codeDiv.innerText = code;
-
   outputDiv.innerHTML = '';
 
 };
