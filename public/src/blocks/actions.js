@@ -6,15 +6,15 @@
 
 export const move =
     {
-        "type": "move",
-        "message0": "Move to X: %1 Y: %2",
-        "args0": [
+        type: "move",
+        message0: "Move to X: %1 Y: %2",
+        args0: [
             {"type": "field_number", "name": "x", "value": 0, "min": 0, "max": 10},
             {"type": "field_number", "name": "y", "value": 0, "min": 0, "max": 10}
         ],
-        "previousStatement": null,
-        "nextStatement": null,
-        "colour": 160
+        previousStatement: null,
+        nextStatement: null,
+        colour: 160
     };
 
 export const grab = {
