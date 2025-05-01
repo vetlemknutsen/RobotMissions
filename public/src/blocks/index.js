@@ -1,18 +1,24 @@
-import {environment} from "./environment";
 import {move} from "./actions";
 import {grab} from "./actions";
 import {drop} from "./actions";
 import {mission} from "./mission";
-import {box} from "./environment";
 import {robot} from "./robot";
+import {submission} from "./submissions";
+import {fork, merge, wait} from "./flow";
+import {shelf} from "./objects";
+import {isEmpty} from "./conditions";
 
 
 export const blocks = ([
     mission,
-    ...environment,
-    box,
+    submission,
     robot,
     move,
     grab,
-    drop
+    drop,
+    fork,
+    merge,
+    wait,
+    shelf,
+    isEmpty
 ]);

@@ -1,24 +1,17 @@
 
 
 export const moveGenerator = (block) => {
-  const x = block.getFieldValue('x');
-  const y = block.getFieldValue('y');
-  return {
-    action: 'move',
-    x: x,
-    y: y
-  };
+  const target = block.getFieldValue('TARGET');
+  return `Move to Shelf ${target}`;
 };
 
-export const grabGenerator = () => {
-  return {
-    action: 'grab'
-  };
+export const grabGenerator = (block) => {
+  const box = block.getFieldValue('BOX');
+  return `Grab Box ${box}`;
 };
 
 export const dropGenerator = () => {
-  return {
-    action: 'drop'
-  };
+  const box = block.getFieldValue('BOX');
+  return `Drop Box ${box}`;
 };
 

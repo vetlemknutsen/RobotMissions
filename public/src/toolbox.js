@@ -14,6 +14,16 @@ export const toolbox = {
     },
     {
       kind: 'category',
+      name: 'SubMission',
+      contents: [
+        {
+          kind: 'block',
+          type: 'submission',
+        }
+      ],
+    },
+    {
+      kind: 'category',
       name: 'Robot',
       contents: [
         {
@@ -24,7 +34,7 @@ export const toolbox = {
     },
     {
       kind: 'category',
-      name: 'Robot Commands',
+      name: 'Robot Tasks',
       contents: [
         {
           kind: 'block',
@@ -42,17 +52,36 @@ export const toolbox = {
     },
     {
       kind: 'category',
-      name: 'Environment',
+      name: 'Task Flows',
       contents: [
         {
           kind: 'block',
-          type: 'environment',
+          type: 'fork',
         },
         {
           kind: 'block',
-          type: 'box',
+          type: 'merge',
+        },
+        {
+          kind: 'block',
+          type: 'wait',
         }
       ],
+    },
+    {
+      kind: 'category',
+      name: 'Objects',
+      contents: [
+        { kind: 'block', type: 'shelf' },
+      ]
+    },
+    {
+      kind: 'category',
+      name: 'Condition',
+      contents: [
+        { kind: 'block', type: 'isEmpty' }
+      ]
     }
+
     ]
 };

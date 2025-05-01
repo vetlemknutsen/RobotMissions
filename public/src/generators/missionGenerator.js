@@ -1,24 +1,27 @@
 import {toMissionJson} from "./index";
 
 export const missionGenerator = (block) => {
-    const environmentBlock = block.getInputTargetBlock('ENVIRONMENT');
-    const robotBlock = block.getInputTargetBlock("ROBOTS");
-    const actions = [];
+    const submissionsBlock = block.getInputTargetBlock("SUBMISSIONS");
+    const submissions = [];
 
-    let actionBlock = block.getInputTargetBlock('ACTIONS');
-    while (actionBlock) {
-        const generator = toMissionJson[actionBlock.type];
-        if (generator) {
-            actions.push(generator(actionBlock));
+    console.log("Mission Block Structure:", block);
+
+    if (submissionsBlock) {
+        let currentBlock = submissionsBlock;
+        while (currentBlock) {
+            const generator = toMissionJson[currentBlock.type];
+            if (generator) {
+                submissions.push(generator(currentBlock));
+            }
+            currentBlock = currentBlock.getNextBlock();
         }
-        actionBlock = actionBlock.getNextBlock();
     }
 
     return {
         mission: {
-            environment: environmentBlock ? toMissionJson[environmentBlock.type](environmentBlock) : null,
-            robot: robotBlock ? toMissionJson[robotBlock.type](robotBlock) : null,
-            actions: actions
+            submissions : submissions
         }
     };
 };
+
+
