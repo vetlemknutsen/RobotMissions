@@ -10,7 +10,7 @@ export const grabGenerator = (block) => {
   return `Grab Box ${box}`;
 };
 
-export const dropGenerator = () => {
+export const dropGenerator = (block) => {
   const box = block.getFieldValue('BOX');
   return `Drop Box ${box}`;
 };

@@ -7,7 +7,7 @@ export const fork = {
     ],
     previousStatement: null,
     nextStatement: null,
-    colour: 260
+    colour: 290
 };
 
 export const merge = {
@@ -15,7 +15,7 @@ export const merge = {
     message0: 'Merge tasks',
     previousStatement: null,
     nextStatement: null,
-    colour: 260
+    colour: 290
 };
 
 export const wait = {
@@ -26,6 +26,6 @@ export const wait = {
     ],
     previousStatement: null,
     nextStatement: null,
-    colour: 260
+    colour: 290
 };
 

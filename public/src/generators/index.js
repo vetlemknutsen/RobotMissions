@@ -4,8 +4,13 @@ import {missionGenerator} from "./missionGenerator";
 import {robotGenerator} from "./robotGenerator";
 import {submissionGenerator} from "./submissionGenerator";
 import {forkGenerator, mergeGenerator, waitGenerator} from "./flowgenerator";
-import {shelfGenerator} from "./objectsGenerator";
-import {isEmptyGenerator} from "./conditionsGenerator";
+import {shelfGenerator, submissionObjectGenerator} from "./objectsGenerator";
+import {
+    andConditionGenerator,
+    ifConditionGenerator,
+    ifElseConditionGenerator,
+    shelfConditionGenerator, orConditionGenerator, submissionConditionGenerator
+} from "./conditionsGenerator";
 
 export const toMissionJson = {
     mission: missionGenerator,
@@ -18,6 +23,12 @@ export const toMissionJson = {
     merge : mergeGenerator,
     wait : waitGenerator,
     shelf : shelfGenerator,
-    isEmpty : isEmptyGenerator
+    submissionObject : submissionObjectGenerator,
+    if_condition : ifConditionGenerator,
+    if_else_condition : ifElseConditionGenerator,
+    and_condition : andConditionGenerator,
+    or_condition : orConditionGenerator,
+    shelfCondition : shelfConditionGenerator,
+    submissionCondition : submissionConditionGenerator
 };
 

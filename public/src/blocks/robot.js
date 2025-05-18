@@ -8,6 +8,6 @@ export const robot = {
         {"type": "input_statement", "name": "TASKS"},
     ],
     output : null,
-    colour: 150
+    colour: 100
 
 };

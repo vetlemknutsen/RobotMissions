@@ -8,7 +8,7 @@ export const move =
         ],
         previousStatement: null,
         nextStatement: null,
-        colour: 160
+        colour: 60
     };
 
 export const grab = {
@@ -19,7 +19,7 @@ export const grab = {
     ],
     previousStatement: null,
     nextStatement: null,
-    colour: 200
+    colour: 60
 };
 
 export const drop = {
@@ -30,5 +30,5 @@ export const drop = {
     ],
     previousStatement: null,
     nextStatement: null,
-    colour: 200
+    colour: 60
 };
