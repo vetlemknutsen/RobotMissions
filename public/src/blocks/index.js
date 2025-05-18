@@ -5,8 +5,15 @@ import {mission} from "./mission";
 import {robot} from "./robot";
 import {submission} from "./submissions";
 import {fork, merge, wait} from "./flow";
-import {shelf} from "./objects";
-import {isEmpty} from "./conditions";
+import {shelf, submissionObject} from "./objects";
+import {
+    andCondition,
+    ifCondition,
+    ifElseCondition,
+    objectCondition,
+    orCondition,
+    submissionCondition
+} from "./conditions";
 
 
 export const blocks = ([
@@ -20,5 +27,11 @@ export const blocks = ([
     merge,
     wait,
     shelf,
-    isEmpty
+    submissionObject,
+    ifCondition,
+    ifElseCondition,
+    andCondition,
+    orCondition,
+    objectCondition,
+    submissionCondition
 ]);

@@ -1,7 +1,9 @@
 export const mission = {
     type: 'mission',
-    message0: 'Mission Plan %1 %2 %3',
+    message0: 'Mission Plan \n Warehouse Grid: X: %1 Y: %2 %3 %4 %5',
     args0: [
+        {type: "field_number", name: "X", value: 0, min: 0, max: 10},
+        {type: "field_number", name: "Y", value: 0, min: 0, max: 10},
         {
             type: 'input_dummy'
         },
@@ -14,7 +16,7 @@ export const mission = {
             name: 'SUBMISSIONS'
         }
     ],
-    colour: 100,
+    colour: 210,
     previousStatement: null,
     nextStatement: null,
 };

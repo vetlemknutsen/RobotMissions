@@ -2,9 +2,9 @@ import {toMissionJson} from "./index";
 
 export const missionGenerator = (block) => {
     const submissionsBlock = block.getInputTargetBlock("SUBMISSIONS");
+    const x = block.getFieldValue("X");
+    const y = block.getFieldValue("Y");
     const submissions = [];
-
-    console.log("Mission Block Structure:", block);
 
     if (submissionsBlock) {
         let currentBlock = submissionsBlock;
@@ -19,6 +19,8 @@ export const missionGenerator = (block) => {
 
     return {
         mission: {
+            x : x,
+            y: y,
             submissions : submissions
         }
     };

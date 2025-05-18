@@ -2,8 +2,8 @@ import {toMissionJson} from "./index";
 
 export const robotGenerator = (block) => {
     const id = block.getFieldValue("ID");
-    const x = block.getFieldValue("x");
-    const y = block.getFieldValue("y");
+    const x = block.getFieldValue("X");
+    const y = block.getFieldValue("Y");
 
     let tasksBlock = block.getInputTargetBlock("TASKS");
     const tasks = [];
