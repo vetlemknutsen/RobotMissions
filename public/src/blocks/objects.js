@@ -4,7 +4,7 @@ export const shelf = {
     args0: [
         { type: 'field_input', name: 'NAME', text: 'A' }
     ],
-    output: 'object',
+    output: 'shelf',
     colour: 30
 };
 

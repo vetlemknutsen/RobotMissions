@@ -34,17 +34,3 @@ export const mergeGenerator = () => {
     };
 };
 
-export const waitGenerator = (block) => {
-    const objectBlock = block.getInputTargetBlock('OBJECT');
-    const object = objectBlock ? toMissionJson[objectBlock.type](objectBlock) : null;
-
-    const conditionBlock = objectBlock?.getInputTargetBlock('CONDITION');
-    const condition = conditionBlock ? toMissionJson[conditionBlock.type](conditionBlock) : null;
-
-
-    return {
-        action: 'wait',
-        object : object,
-        condition: condition
-    };
-};

@@ -1,18 +1,19 @@
-import {move} from "./actions";
+import {move, plan} from "./actions";
 import {grab} from "./actions";
 import {drop} from "./actions";
 import {mission} from "./mission";
 import {robot} from "./robot";
 import {submission} from "./submissions";
-import {fork, merge, wait} from "./flow";
+import {fork, merge} from "./flow";
 import {shelf, submissionObject} from "./objects";
 import {
     andCondition,
     ifCondition,
     ifElseCondition,
-    objectCondition,
+    shelfCondition,
     orCondition,
-    submissionCondition
+    submissionCondition,
+    wait
 } from "./conditions";
 
 
@@ -21,6 +22,7 @@ export const blocks = ([
     submission,
     robot,
     move,
+    plan,
     grab,
     drop,
     fork,
@@ -32,6 +34,6 @@ export const blocks = ([
     ifElseCondition,
     andCondition,
     orCondition,
-    objectCondition,
+    shelfCondition,
     submissionCondition
 ]);

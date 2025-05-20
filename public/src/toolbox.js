@@ -52,6 +52,10 @@ export const toolbox = {
           kind: 'block',
           type: 'drop',
         },
+        {
+          kind: 'block',
+          type: 'plan',
+        },
       ],
     },
     {
@@ -67,10 +71,7 @@ export const toolbox = {
           kind: 'block',
           type: 'merge',
         },
-        {
-          kind: 'block',
-          type: 'wait',
-        }
+
       ],
     },
     {
@@ -84,15 +85,16 @@ export const toolbox = {
     },
     {
       kind: 'category',
-      name: 'Condition',
+      name: 'Conditions',
       colour: 180,
       contents: [
         { kind: 'block', type: 'if_condition' },
         { kind: 'block', type: 'if_else_condition' },
         { kind: 'block', type: 'and_condition' },
         { kind: 'block', type: 'or_condition' },
-        { kind: 'block', type: 'objectCondition' },
-        { kind: 'block', type: 'submissionCondition' }
+        { kind: 'block', type: 'shelfCondition' },
+        { kind: 'block', type: 'submissionCondition' },
+        { kind: 'block', type: 'wait'}
       ]
     }
 

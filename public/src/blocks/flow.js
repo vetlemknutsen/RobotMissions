@@ -18,14 +18,4 @@ export const merge = {
     colour: 290
 };
 
-export const wait = {
-    type: 'wait',
-    message0: 'Wait until %1',
-    args0: [
-        { type: 'input_value', name: 'OBJECT' }
-    ],
-    previousStatement: null,
-    nextStatement: null,
-    colour: 290
-};
 

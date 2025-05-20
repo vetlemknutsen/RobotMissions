@@ -1,8 +1,8 @@
-export const objectCondition = {
-    type: 'objectCondition',
+export const shelfCondition = {
+    type: 'shelfCondition',
     message0: '%1 %2',
     args0: [
-        {type: 'input_value', name: 'OBJECT', check: 'object'},
+        {type: 'input_value', name: 'OBJECT', check: 'shelf'},
         {type: 'field_dropdown', name: 'METHOD',
             options: [
                 ['is empty', 'isEmpty'],
@@ -75,6 +75,17 @@ export const orCondition = {
         { type: 'input_value', name: 'RIGHT' }
     ],
     output: 'Condition',
+    colour: 180
+};
+
+export const wait = {
+    type: 'wait',
+    message0: 'Wait until %1',
+    args0: [
+        { type: 'input_value', name: 'OBJECT' }
+    ],
+    previousStatement: null,
+    nextStatement: null,
     colour: 180
 };
 

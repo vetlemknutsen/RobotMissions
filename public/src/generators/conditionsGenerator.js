@@ -3,10 +3,10 @@ import {toMissionJson} from "./index";
 export const shelfConditionGenerator = (block) => {
     const method = block.getFieldValue('METHOD');
     const objectBlock = block.getInputTargetBlock('OBJECT');
-    const object = objectBlock ? toMissionJson[objectBlock.type]?.(objectBlock) : null;
+    const shelf = objectBlock ? toMissionJson[objectBlock.type]?.(objectBlock) : null;
 
     return {
-        object: object,
+        shelf: shelf,
         type: method,
     };
 };
@@ -109,3 +109,18 @@ export const orConditionGenerator = (block) => {
     };
 };
 
+
+export const waitGenerator = (block) => {
+    const objectBlock = block.getInputTargetBlock('OBJECT');
+    const object = objectBlock ? toMissionJson[objectBlock.type](objectBlock) : null;
+
+    const conditionBlock = objectBlock?.getInputTargetBlock('CONDITION');
+    const condition = conditionBlock ? toMissionJson[conditionBlock.type](conditionBlock) : null;
+
+
+    return {
+        action: 'wait',
+        object : object,
+        condition: condition
+    };
+};

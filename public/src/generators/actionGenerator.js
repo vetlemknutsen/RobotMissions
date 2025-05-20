@@ -1,13 +1,23 @@
+import {toMissionJson} from "./index";
 
 
 export const moveGenerator = (block) => {
   const target = block.getFieldValue('TARGET');
-  return `Move to Shelf ${target}`;
+  const object = block.getFieldValue('OBJECT');
+
+  return `Move to ${object} ${target}`;
+};
+
+export const planGenerator = (block) => {
+  const target = block.getFieldValue('TARGET');
+  const object = block.getFieldValue('PLAN');
+
+  return `Plan route to ${object} ${target}`;
 };
 
 export const grabGenerator = (block) => {
-  const box = block.getFieldValue('BOX');
-  return `Grab Box ${box}`;
+  const shelf = block.getFieldValue('SHELF');
+  return `Grab Box in Shelf ${shelf}`;
 };
 
 export const dropGenerator = (block) => {
