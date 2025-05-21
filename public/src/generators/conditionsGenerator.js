@@ -1,8 +1,8 @@
 import {toMissionJson} from "./index";
 
 export const shelfConditionGenerator = (block) => {
-    const method = block.getFieldValue('METHOD');
-    const objectBlock = block.getInputTargetBlock('OBJECT');
+    const method = block.getFieldValue("METHOD");
+    const objectBlock = block.getInputTargetBlock("OBJECT");
     const shelf = objectBlock ? toMissionJson[objectBlock.type]?.(objectBlock) : null;
 
     return {
@@ -12,8 +12,8 @@ export const shelfConditionGenerator = (block) => {
 };
 
 export const submissionConditionGenerator = (block) => {
-    const method = block.getFieldValue('METHOD');
-    const objectBlock = block.getInputTargetBlock('OBJECT');
+    const method = block.getFieldValue("METHOD");
+    const objectBlock = block.getInputTargetBlock("OBJECT");
     const object = objectBlock ? toMissionJson[objectBlock.type]?.(objectBlock) : null;
 
     return {
@@ -23,10 +23,10 @@ export const submissionConditionGenerator = (block) => {
 };
 
 export const ifConditionGenerator = (block) => {
-    const object = toMissionJson[block.getInputTargetBlock('OBJECT')?.type]?.(block.getInputTargetBlock('OBJECT'));
+    const object = toMissionJson[block.getInputTargetBlock("OBJECT")?.type]?.(block.getInputTargetBlock("OBJECT"));
     const doBranch = [];
 
-    let current = block.getInputTargetBlock('DO');
+    let current = block.getInputTargetBlock("DO");
     while (current) {
         const gen = toMissionJson[current.type];
         if (gen) doBranch.push(gen(current));
@@ -34,20 +34,20 @@ export const ifConditionGenerator = (block) => {
     }
 
     return {
-        action: 'if',
+        action: "if",
         condition : object,
         do: doBranch
     };
 };
 
 export const ifElseConditionGenerator = (block) => {
-    const objectBlock = block.getInputTargetBlock('OBJECT');
+    const objectBlock = block.getInputTargetBlock("OBJECT");
     const object = objectBlock ? toMissionJson[objectBlock.type]?.(objectBlock) : null;
 
     const doBranch = [];
     const elseBranch = [];
 
-    let doBlock = block.getInputTargetBlock('DO');
+    let doBlock = block.getInputTargetBlock("DO");
     if (doBlock) {
         let currentBlock = doBlock;
         while (currentBlock) {
@@ -59,7 +59,7 @@ export const ifElseConditionGenerator = (block) => {
         }
     }
 
-    let elseBlock = block.getInputTargetBlock('ELSE');
+    let elseBlock = block.getInputTargetBlock("ELSE");
     if (elseBlock) {
         let currentBlock = elseBlock;
         while (currentBlock) {
@@ -72,7 +72,7 @@ export const ifElseConditionGenerator = (block) => {
     }
 
     return {
-        action: 'if_then_else',
+        action: "if_then_else",
         condition : object,
         do: doBranch,
         else: elseBranch
@@ -81,8 +81,8 @@ export const ifElseConditionGenerator = (block) => {
 
 
 export const andConditionGenerator = (block) => {
-    const leftBlock = block.getInputTargetBlock('LEFT');
-    const rightBlock = block.getInputTargetBlock('RIGHT');
+    const leftBlock = block.getInputTargetBlock("LEFT");
+    const rightBlock = block.getInputTargetBlock("RIGHT");
 
     const left = leftBlock ? toMissionJson[leftBlock.type]?.(leftBlock) : null;
     const right = rightBlock ? toMissionJson[rightBlock.type]?.(rightBlock) : null;
@@ -96,14 +96,14 @@ export const andConditionGenerator = (block) => {
 
 
 export const orConditionGenerator = (block) => {
-    const leftBlock = block.getInputTargetBlock('LEFT');
-    const rightBlock = block.getInputTargetBlock('RIGHT');
+    const leftBlock = block.getInputTargetBlock("LEFT");
+    const rightBlock = block.getInputTargetBlock("RIGHT");
 
     const left = leftBlock ? toMissionJson[leftBlock.type]?.(leftBlock) : null;
     const right = rightBlock ? toMissionJson[rightBlock.type]?.(rightBlock) : null;
 
     return {
-        type: 'or',
+        type: "or",
         left: left,
         right: right
     };
@@ -111,16 +111,11 @@ export const orConditionGenerator = (block) => {
 
 
 export const waitGenerator = (block) => {
-    const objectBlock = block.getInputTargetBlock('OBJECT');
-    const object = objectBlock ? toMissionJson[objectBlock.type](objectBlock) : null;
-
-    const conditionBlock = objectBlock?.getInputTargetBlock('CONDITION');
+    const conditionBlock = block.getInputTargetBlock("CONDITION");
     const condition = conditionBlock ? toMissionJson[conditionBlock.type](conditionBlock) : null;
 
-
     return {
-        action: 'wait',
-        object : object,
+        action: "wait",
         condition: condition
     };
 };

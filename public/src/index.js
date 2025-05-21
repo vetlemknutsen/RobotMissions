@@ -60,5 +60,30 @@ ws.addChangeListener((e) => {
   ) {
     return;
   }
+
+  const allBlocks = ws.getAllBlocks();
+  const robotIds = [];
+  const submissionIds = [];
+
+  allBlocks.forEach((block) => {
+    if (block.type === 'robot') {
+      const id = block.getFieldValue('ID');
+      if (robotIds.includes(id)) {
+        alert(`Duplicate Robot ID detected: ${id}`);
+      } else {
+        robotIds.push(id);
+      }
+    }
+
+    if (block.type === 'submission') {
+      const id = block.getFieldValue('ID');
+      if (submissionIds.includes(id)) {
+        alert(`Duplicate Submission ID detected: ${id}`);
+      } else {
+        submissionIds.push(id);
+      }
+    }
+  });
+
   runCode();
 });

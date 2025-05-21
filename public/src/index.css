@@ -25,6 +25,7 @@ code {
   display: flex;
   flex-direction: column;
   width: 400px;
+  height: 1100px;
   flex: 0 0 400px;
   overflow: auto;
   margin: 1rem;

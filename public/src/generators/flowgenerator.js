@@ -4,7 +4,7 @@ export const forkGenerator = (block) => {
     const branch1 = [];
     const branch2 = [];
 
-    let branch1Block = block.getInputTargetBlock('BRANCH1');
+    let branch1Block = block.getInputTargetBlock("BRANCH1");
     while (branch1Block) {
         const generator = toMissionJson[branch1Block.type];
         if (generator) {
@@ -13,7 +13,7 @@ export const forkGenerator = (block) => {
         branch1Block = branch1Block.getNextBlock();
     }
 
-    let branch2Block = block.getInputTargetBlock('BRANCH2');
+    let branch2Block = block.getInputTargetBlock("BRANCH2");
     while (branch2Block) {
         const generator = toMissionJson[branch2Block.type];
         if (generator) {
@@ -23,14 +23,14 @@ export const forkGenerator = (block) => {
     }
 
     return {
-        action: 'fork',
+        action: "fork",
         branches: [branch1, branch2]
     };
 };
 
 export const mergeGenerator = () => {
     return {
-        action: 'merge'
+        action: "merge"
     };
 };
 

@@ -5,6 +5,20 @@ export const robotGenerator = (block) => {
     const x = block.getFieldValue("X");
     const y = block.getFieldValue("Y");
 
+
+    // check bounds
+    let parent = block.getParent();
+    let grandparent = parent.getParent()
+    const gridXStr = grandparent.getFieldValue("X");
+    const gridYStr = grandparent.getFieldValue("Y");
+    const gridX = parseInt(gridXStr, 10);
+    const gridY = parseInt(gridYStr, 10);
+
+    if (x > gridX || y > gridY) {
+        alert(`Robot ${id} is out of bounds! Grid is ${gridX}x${gridY}, robot at (${x}, ${y})`);
+    }
+
+
     let tasksBlock = block.getInputTargetBlock("TASKS");
     const tasks = [];
 
